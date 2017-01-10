@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Bi42.Models.MyWork>
+
+@{
+    ViewBag.Title = "Мои работы";
+}
+
+@section featured {
+    <div class="alert alert-info">
+        Создайте ваши примеры работ, наиболее красноречиво характеризующих вас.
+    </div>
+}
+
+<table width="100%" class="table table-bordered">
+    <tr>
+        <th width="200px">@Html.ActionLink("Создать новый пример", "Create", null, new { @class="btn btn-link"})</th>
+        <th class="col-md-1">
+        </th>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style ="white-space:nowrap">
+                @Html.ActionLink("Посмотреть", "Details", new { id = item.MyWorkID }, new { @class = "btn btn-link" }) |
+                @Html.ActionLink("Изменить", "Edit", new { id = item.MyWorkID }, new { @class = "btn btn-link" }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.MyWorkID }, new { @class = "btn btn-link" })
+            </td>
+            <td>
+                @if (item.MyWorkImage != null && !"".Equals(item.MyWorkImage))
+                {
+                    <img src="@Html.DisplayFor(modelItem => item.MyWorkImage)" class="img-responsive" />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                <h4>@Html.DisplayFor(modelItem => item.Name) <small>@Html.DisplayFor(modelItem => item.Profile.Name)</small></h4>
+                <p>@Html.DisplayFor(modelItem => item.Description)</p>
+            </td>
+        </tr>
+    }
+
+</table>
+

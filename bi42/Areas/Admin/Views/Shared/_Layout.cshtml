@@ -1,0 +1,15 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@section topmenu {
+  <li>@Html.ActionLink("Главная", "Index", "Home")</li>
+  <li>@Html.ActionLink("Проекты", "Project", "Home")</li>
+  <li>@Html.ActionLink("Заказчик", "Customer", "Home")</li>
+  <li>@Html.ActionLink("Подрядчик", "Emploer", "Home")</li>
+  <li>@Html.ActionLink("О сайте", "About", "Home")</li>
+  <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
+}
+
+@RenderSection("featured", false)
+@RenderBody()
+

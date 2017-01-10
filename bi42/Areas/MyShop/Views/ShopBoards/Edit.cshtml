@@ -1,0 +1,55 @@
+﻿@model Bi42.Models.ShopBoard
+
+@{
+    ViewBag.Title = "Изменить описание новости";
+}
+
+@section featured {
+    <div class="alert alert-info">
+        Измените описание Вашей новости.
+    </div>
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { role="form", enctype = "multipart/form-data", @class="form-horizontal" }))
+{
+    @Html.ValidationSummary(false)
+    @Html.HiddenFor(model => model.ShopBoardID)
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+                @Html.TextAreaFor(model => model.Description, new { rows="5", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+        <div class="row">
+            <div class="checkbox col-md-4">
+                <label>
+                    @Html.CheckBoxFor(model => model.IsActive, new { @class = "" })
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col-md-2">
+                <input type="submit" class="btn btn-primary" value="Сохранить" />
+            </div>
+            <div class="col-md-1">
+                @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

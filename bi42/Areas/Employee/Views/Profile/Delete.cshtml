@@ -1,0 +1,98 @@
+﻿@model Bi42.Models.Profile
+@{
+    ViewBag.Title = "Удаление профиля";
+}
+@section featured {
+   <div class="alert alert-info">
+    Профиль удаляется безвозратно с удалением всех связанных с ним проектов и контрактов.
+</div>
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.OrderAreaID, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.OrderArea.Name, null, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.OrderAreaID)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Slogan, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Slogan, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Slogan )
+            </div>
+        </div>
+        @if (Model.LogoImage != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Label("LogoImage", new { @class = "control-label" })
+                    <br />
+                    <img id="LogoImage" src="@Model.LogoImage" />
+                </div>
+            </div>
+        }
+
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.SiteUrl, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.SiteUrl, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.SiteUrl)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Phone, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Description, new { @class = "control-label" })
+                @Html.TextAreaFor(model => model.Description, new { rows = 5, @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Bids, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Bids, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Bids)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.DisplayFor(model => model.IsActive)
+                @Html.LabelFor(model => model.IsActive, new { @class = "control-label", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        @using (Html.BeginForm())
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <input type="submit" class="btn btn-primary" value="Сохранить" />
+                    &nbsp;&nbsp;
+                    @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-default" })
+                </div>
+            </div>
+        }
+    </div>
+</div>

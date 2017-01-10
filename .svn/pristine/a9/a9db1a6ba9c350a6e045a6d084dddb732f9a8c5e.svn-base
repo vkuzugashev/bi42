@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Дополнительные сведения об использовании преобразования Web.config см. по адресу: http://go.microsoft.com/fwlink/?LinkId=301874 -->
+
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <!--
+    В следующем примере преобразование "SetAttributes" будет изменять значение
+    "connectionString" с целью использования "ReleaseSQLServer", только когда
+    указатель "Match" находит атрибут "name", который имеет значение "MyDB".
+
+    <connectionStrings>
+      <add name="MyDB"
+        connectionString="Data Source=ReleaseSQLServer;Initial Catalog=MyReleaseDB;Integrated Security=True"
+        xdt:Transform="SetAttributes" xdt:Locator="Match(name)"/>
+    </connectionStrings>
+  -->
+  <connectionStrings>
+    <add name="DefaultConnection" connectionString="Data Source=u448924.mssql.masterhost.ru;Initial Catalog=u448924_bi42;User ID=u448924;Password=surambl5d5etc" 
+         xdt:Transform="SetAttributes" xdt:Locator="Match(name)"/>
+    <add name="DbModel" connectionString="Data Source=u448924.mssql.masterhost.ru;Initial Catalog=u448924_bi42;User ID=u448924;Password=surambl5d5etc" 
+         xdt:Transform="SetAttributes" xdt:Locator="Match(name)"/>
+    <add name="ProductionConnection" xdt:Transform="Remove" xdt:Locator="Match(name)"/>
+  </connectionStrings>
+  <system.web>
+    <!--
+      В следующем примере преобразование "Replace" будет заменять весь 
+      раздел <customErrors> в файле Web.config.
+      Заметьте, поскольку имеется только один раздел customErrors в узле
+      <system.web>, не требуется использовать атрибут "xdt:Locator".
+
+      <customErrors defaultRedirect="GenericError.htm"
+        mode="RemoteOnly" xdt:Transform="Replace">
+        <error statusCode="500" redirect="InternalError.htm"/>
+      </customErrors>
+    -->
+  </system.web>
+  <entityFramework>
+    <contexts>
+      <context type="Bi42.Models.DbModel, Bi42" disableDatabaseInitialization="true" xdt:Transform="SetAttributes">
+        <databaseInitializer xdt:Transform="Remove"/>
+      </context>
+    </contexts>
+  </entityFramework>
+</configuration>

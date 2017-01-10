@@ -1,0 +1,39 @@
+﻿@model Bi42.Models.ShopBoard
+
+@{
+    ViewBag.Title = "Новость";
+}
+
+@section featured {
+<div class="alert alert-info">
+    Просмотр описания новости.
+</div>
+}
+
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        @Html.LabelFor(model => model.Description, new { @class = "control-label" })
+        @Html.TextAreaFor(model => model.Description, new { rows = 5, @class = "form-control", @readonly = "readonly" })
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        @Html.LabelFor(model => model.IsActive, new { @class = "control-label" })
+        @Html.DisplayFor(model => model.IsActive)
+    </div>
+</div>
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-2">
+        @Html.ActionLink("Изменить", "Edit", new { id = Model.ShopBoardID }, new { @class = "btn btn-primary" })
+    </div>
+    <div class="col-md-1">
+        @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-default" })
+    </div>
+</div>

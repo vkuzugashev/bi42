@@ -1,0 +1,51 @@
+﻿@model Bi42.Models.Contract
+@{
+    ViewBag.Title = "Запрос на закрытие контракта";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section featured {
+    <div class="alert alert-info">
+        Напишите подробный отчёт о выполненых работах/услугах в соответсвии с контрактом, выберите пункт "Я согласен" и нажмите кнопку "Отправить".
+        Если есть замечания или какие-то работы/услуги не выполнены вами по независящим от вас причинам укажите это в отчёте.
+    </div>
+}
+
+<h4>Текст контракта<small>, обновление: @Model.PublishTime</small></h4>
+<div class="row">
+        <div class="col-md-12">
+            <div class="well">
+                @Html.DisplayFor(model=>model.Description)
+            </div>
+        </div>
+</div>
+
+@using (Html.BeginForm(null, null, FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.ContractID)
+    <div class="row">
+        <div class="col-md-12">
+            @Html.LabelFor(model => model.Report, new { @class = "form-label" })<small>, обновление: @Model.ReportTime</small>
+            @Html.TextAreaFor(model => model.Report, new { @class="form-control", rows="15"})
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-md-12">
+            <label>Я согласен</label>
+            &nbsp;&nbsp;
+            <input type="checkbox" name="accept" value="true">
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-md-12">
+            <input type="submit" class="btn btn-primary" value="Отправить" />
+            &nbsp;&nbsp;
+            @Html.ActionLink("Назад", "BidDetails", "Bid", new { id=Model.BidID }, new { @class = "btn btn-default" })
+        </div>
+    </div>
+}
+
+

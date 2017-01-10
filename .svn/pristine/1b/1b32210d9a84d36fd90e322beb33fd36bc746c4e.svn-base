@@ -1,0 +1,54 @@
+﻿@model Bi42.Models.FeedBack
+@{
+    ViewBag.Title = "Отзыв о работнике";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section featured {
+    <div class="alert alert-info">
+        Создайте ваш отзыв о работнике. Оцените на ваш взгляд его уровень как специалиста.
+    </div>
+}
+<h4>Работник</h4>
+<hr>
+<div class="row">
+        <div class="col-md-8">
+            <div class="row">
+                @Html.LabelFor(model => model.Profile.Name)
+                @Html.TextBoxFor(model => model.Profile.Name, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.Profile.Description)
+                @Html.TextAreaFor(model => model.Profile.Description, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+</div>
+
+<br>
+<h4>Ваш отзыв</h4>
+<hr>
+
+@using (Html.BeginForm(null, null, FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.FeedBackID)
+    @Html.HiddenFor(model => model.ProfileID)
+    @Html.HiddenFor(model => model.OrderID)
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                @Html.LabelFor(model => model.Description)
+                @Html.TextAreaFor(model => model.Description, new { rows = 5, @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-md-12">
+            <input type="submit" class="btn btn-primary" value="Сохранить" />
+            &nbsp;&nbsp;
+            @Html.ActionLink("Назад", "Details", new { id=Model.OrderID }, new { @class = "btn btn-default" })
+        </div>
+    </div>
+}
+

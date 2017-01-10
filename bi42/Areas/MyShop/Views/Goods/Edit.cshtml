@@ -1,0 +1,93 @@
+﻿@model Bi42.Models.Commodity
+
+@{
+    ViewBag.Title = "Изменить товар";
+}
+
+@section featured {
+    <div class="alert alert-info">
+        Измените параметры Вашего товара.
+    </div>
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { role="form", enctype = "multipart/form-data", @class="form-horizontal" }))
+{
+    @Html.ValidationSummary(false)
+    @Html.HiddenFor(model => model.CommodityID)
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.Label("PhotoImage", new { @class = "control-label" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @if (Model.PhotoImage != null)
+                {
+                    <img id="PhotoImage" src="@Model.PhotoImage" class="img-thumbnail">
+                    <br/>
+                    <span>Удалить картинку?</span> @Html.CheckBox("delAttach")
+                }
+                @if (Model.PhotoImage == null)
+                {
+                    <input type="file" name="file" class="form-control" />
+                }
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+                @Html.TextAreaFor(model => model.Description, new { rows = "5", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.Price, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Price, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Price)
+            </div>
+        </div>
+        <div class="row">
+            <div class="checkbox col-md-4">
+                <label>
+                    @Html.CheckBoxFor(model => model.IsActive, new { @class = "" })
+                    @Html.DisplayNameFor(model => model.IsActive)
+                </label>
+            </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col-md-2">
+                <input type="submit" class="btn btn-primary" value="Сохранить" />
+            </div>
+            <div class="col-md-1">
+                @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+    // переопределение валидации на стороне клиента
+    $.validator.methods.range = function (value, element, param) {
+        var globalizedValue = value.replace(",", ".");
+        return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
+    }
+
+    $.validator.methods.number = function (value, element) {
+        return this.optional(element) || /^-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+    }
+</script>
+
+}

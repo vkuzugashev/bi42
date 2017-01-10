@@ -1,0 +1,90 @@
+﻿@model Bi42.Models.Shop
+
+@{
+    ViewBag.Title = "Создать магазин";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { role = "form", enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.ShopAreaID, new { @class = "control-label" })
+                @Html.DropDownListFor(model=> model.ShopAreaID, null, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ShopAreaID)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Name)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.Logo, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Logo, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Logo)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.LogoImage, new { @class = "control-label" })
+                <input type="file" name="file" class="form-control" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.SiteUrl, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.SiteUrl, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.SiteUrl)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.Phone, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.LabelFor(model => model.Description, new { @class = "control-label" })
+                @Html.TextAreaFor(model => model.Description, new { rows="5", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label>
+                    @Html.CheckBoxFor(model => model.IsActive)
+                    @Html.LabelFor(model => model.IsActive, new { @class = "control-label" })
+                </label>
+            </div>
+        </div>
+        <div class="row">&nbsp;</div>
+        <div class="row">
+            <div class="col-md-1">
+                <input type="submit" class="btn btn-primary" value="Сохранить" />
+            </div>
+            <div class="col-md-1">
+                @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-default" })
+            </div>
+        </div>
+        </div>
+}
+
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+            @Scripts.Render("~/bundles/jqueryui")
+        }

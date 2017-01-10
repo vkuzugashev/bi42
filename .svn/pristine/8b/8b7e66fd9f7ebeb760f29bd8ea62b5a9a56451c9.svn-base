@@ -1,0 +1,9 @@
+﻿@{
+    ViewBag.Title = "Контакты";
+}
+<h3>@ViewBag.Message</h3>
+
+<h4>ООО АЙТИ СПЕЦСЕРВИС</h4>
+<h5>Новокузнецк, 654005, Пирогова 9</h5>
+т.<strong>8-951-609-2415</strong><br/>
+email <strong>itsps@list.ru</strong>

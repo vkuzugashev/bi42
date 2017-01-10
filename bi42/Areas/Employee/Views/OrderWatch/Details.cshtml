@@ -1,0 +1,126 @@
+﻿@model Bi42.Models.Order
+
+@{
+    ViewBag.Title = "Заказ #"+Model.OrderID;
+}
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-12">
+        @if (ViewBag.IsNewBid)
+        {
+            @Html.ActionLink("Сделать заявку", "BidCreate", "Bid", new { orderid = Model.OrderID }, new { @class = "btn btn-default" })
+        }
+        &nbsp;&nbsp;
+        @Html.ActionLink("Лента публичных сообщений", "Index", "PublicMessage", new { orderid = Model.OrderID, id = Model.OrderID, retAction = "Details" }, new { @class = "btn btn-default" })
+        &nbsp;&nbsp;
+        @Html.ActionLink("Назад", "Index", "OrderWatch", null, new { @class = "btn btn-default" })
+    </div>
+</div>
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.OrderAreaName, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.OrderAreaName, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.BudgetLevelName, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.BudgetLevelName, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Budget, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Budget, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.StartTime, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.StartTime, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Description, new { @class = "control-label" })
+                @if (Model.OrderFile != null)
+                {
+                    @Html.ActionLink("Загрузить файл", "GetOrderFile", new { area="Customer", controller="Order", id = Model.OrderID })
+                }
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "10", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Requirement, new { @class = "control-label" })
+                @Html.TextAreaFor(model => model.Requirement, new { @class = "form-control", rows = "5", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.PublishTime, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.PublishTime, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.OrderStatusName, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.OrderStatusName, new { @class = "form-control", @readonly = "readonly" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">&nbsp;</div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="row">
+                @{
+                    var bid = Model.Bids.SingleOrDefault(x => x.OrderID==Model.OrderID && x.UserID == User.Identity.Name);
+                    if (bid != null)
+                    {
+                        <div class="well">
+                            <h4>Заявка #@bid.BidID</h4>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="bidStatus">Статус заявки</label>
+                                    <input type="text" id="bidStatus" class="form-control" readonly="readonly" value="@bid.BidStatusName" />
+                                    <label for="startTime">Дата начала</label>
+                                    <input type="text" id="startTime" class="form-control" readonly="readonly" value="@bid.StartTime" />
+                                    <label for="timeRate">Часовая ставка, руб.</label>
+                                    <input type="text" id="timeRate" class="form-control" readonly="readonly" value="@bid.TimeRate" />
+                                    <label for="costTotal">Общая стоимость, руб.</label>
+                                    <input type="text" id="costTotal" class="form-control" readonly="readonly" value="@bid.CostTotal" />
+                                    <label for="desc">Описание заявки</label>
+                                    <div id="desc" class="well">@bid.Description</div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+        </div>
+    </div>
+</div>
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-12">
+        @if (ViewBag.IsNewBid)
+        {
+            @Html.ActionLink("Сделать заявку", "BidCreate", "Bid", new { orderid = Model.OrderID }, new { @class = "btn btn-default" })
+        }
+        &nbsp;&nbsp;
+        @Html.ActionLink("Лента публичных сообщений", "Index", "PublicMessage", new { orderid = Model.OrderID, id = Model.OrderID, retAction = "Details" }, new { @class = "btn btn-default" })
+        &nbsp;&nbsp;
+        @Html.ActionLink("Назад", "Index", "OrderWatch", null, new { @class = "btn btn-default" })
+    </div>
+</div>
+
+

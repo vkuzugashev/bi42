@@ -1,0 +1,151 @@
+﻿@model Bi42.Models.Bid
+@{
+    ViewBag.Title = "Ваше предложение";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    @Styles.Render("~/Content/UI/themes/base")
+}
+
+@section featured {
+    <div class ="alert alert-info">
+    Измените вашу заявку - предложение заказчику.
+    </div>
+}
+
+<h4>Описание заказа</h4>
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="row">
+            @Html.LabelFor(model => model.Order.Name)
+            @Html.TextBoxFor(model => model.Order.Name, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div class="row">
+            @Html.LabelFor(model => model.Order.BudgetLevelName)
+            @Html.TextBoxFor(model => model.Order.BudgetLevelName, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div class="row">
+            @Html.LabelFor(model => model.Order.Budget)
+            @Html.TextBoxFor(model => model.Order.Budget, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div class="row">
+            @Html.LabelFor(model => model.Order.StartTime)
+            @Html.TextBoxFor(model => model.Order.StartTime, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+        <div class="row">
+            @Html.LabelFor(model => model.Order.OrderStatusName)
+            @Html.TextBoxFor(model => model.Order.OrderStatusName, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+    </div>
+
+    <div class="col-md-offset-1 col-md-6">
+        <div class="row">
+            @Html.LabelFor(model => model.OrderDescription)
+            @Html.TextAreaFor(model => model.OrderDescription, new { rows = 15, @class = "form-control", @readonly = "readonly" })
+        </div>
+    </div>
+</div>
+
+<br>
+<h4>Ваша заявка</h4>
+
+@using (Html.BeginForm(null, null, FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.BidID)
+    @Html.HiddenFor(model => model.OrderID)
+    <div class="row">
+        <div class="col-md-4">
+            <div class="row">
+                @Html.LabelFor(model => model.CostTotal)
+                @if (Model.BidStatusID == 1)
+                {
+                    @Html.TextBoxFor(model => model.CostTotal, new { @class = "form-control" })
+                }
+                else
+                {
+                    @Html.TextBoxFor(model => model.CostTotal, new { @class = "form-control", @readonly="readonly" })
+                }
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.TimeRate)
+                @if (Model.BidStatusID == 1)
+                {
+                    @Html.TextBoxFor(model => model.TimeRate, new { @class = "form-control" })
+                }
+                else
+                {
+                    @Html.TextBoxFor(model => model.TimeRate, new { @class = "form-control", @readonly = "readonly" })
+                }
+            </div>
+            <div class="row">
+                @Html.LabelFor(model => model.StartTime)
+                @if (Model.BidStatusID == 1)
+                {
+                    @Html.TextBoxFor(model => model.StartTime, "{0:dd.MM.yyy}", new { @class = "picker form-control" })
+                }
+                else
+                {
+                    @Html.TextBoxFor(model => model.StartTime, "{0:dd.MM.yyy}", new { @class = "picker form-control", @readonly = "readonly" })
+                }
+            </div>
+
+            <div class="row">&nbsp;</div>
+            <div class="row">
+                @if (Model.BidStatusID == 1)
+                {
+                    <label>Удалить заявку</label>                        
+                     @Html.CheckBox("bidDel", new { @class="form-control" })
+                }
+                else if (Model.BidStatusID == 2)
+                {
+                    <label>Подтвердить заявку</label>
+                    <label>Согласен</label> @Html.RadioButton("bidAccept", true, true)
+                    <label>Нет</label> @Html.RadioButton("bidAccept", false)
+                }
+            </div>
+        </div>
+        <div class="col-md-offset-1 col-md-6">
+            <div class="row">
+                @Html.LabelFor(model => model.Description)
+                @if (Model.BidStatusID == 1)
+                {
+                    @Html.TextAreaFor(model => model.Description, new { rows = 5, @class = "form-control" })
+                }
+                else
+                {
+                    @Html.TextAreaFor(model => model.Description, new { rows = 5, @class = "form-control", @readonly = "readonly" })
+                }
+            </div>
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-md-12">
+            @if (Model.BidStatusID < 3)
+            {
+                <input type="submit" class="btn btn-primary" value="Отправить" />
+            }
+            &nbsp;&nbsp;
+            @Html.ActionLink("Назад", "OrderBidDetail", new { id= Model.BidID }, new { @class = "btn btn-default" })
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    @Scripts.Render("~/bundles/jqueryui")
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.picker').datepicker($.datepicker.regional['ru']);
+        });
+    </script>
+}
+
+
+
+
+
+

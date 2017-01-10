@@ -1,0 +1,102 @@
+﻿@model IEnumerable<Bi42.Models.Order>
+
+@{
+    ViewBag.Title = "Разместить заказ";
+}
+
+@section featured {
+    <div class="alert alert-info">
+        Создайте ваш заказ, укажите объём работы, сроки и предпологаемый бюджет. 
+        Укажите для заказа статус "Тендер", чтобы заказ смогли увидеть подрядчики.
+    </div>
+}
+<br/>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            <tr>
+                <th class="col-md-1">
+                    @Html.ActionLink("Создать заказ", "Create", null, new { @class = "btn btn-link" })
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.OrderAreaName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th class="col-md-1">
+                    @Html.DisplayNameFor(model => model.PublishTime)
+                </th>
+                <th class="col-md-1">
+                    @Html.DisplayNameFor(model => model.StartTime)
+                </th>
+                <th class="col-md-1">
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th class="col-md-1">
+                    @Html.DisplayNameFor(model => model.OrderStatusName)
+                </th>
+                <th class="col-md-1">
+                    @Html.DisplayNameFor(model => model.BudgetLevelName)
+                </th>
+                <th class="col-md-1">
+                    @Html.DisplayNameFor(model => model.Budget)
+                </th>
+                <th class="col-md-1">
+                    @Html.DisplayNameFor(model => model.CountBids)
+                </th>
+                <th class="col-md-1">
+                    @Html.DisplayNameFor(model => model.Contracts)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td style="white-space:nowrap">
+                        @Html.ActionLink("Открыть", "Details", new { orderid = item.OrderID }, new { @class = "btn btn-link" })
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderAreaName)
+                    </td>
+                    <td>
+                        @Html.ActionLink(item.ProfileName, "ProfileView", "Profile", new { id = item.ProfileID, area = "Customer" }, null)
+                        <br/>
+                        Заказ №@item.OrderID, @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PublishTime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartTime)
+                    </td>
+                    <td>
+                        @(item.Status==1 ? "Архив":"")
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderStatusName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BudgetLevelName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Budget)
+                    </td>
+                    <td style="white-space:nowrap">
+                        @if (item.CountBids > 0)
+                        {
+                            @Html.ActionLink(item.CountBids + " шт.", "Index", "Bid", new { orderid = item.OrderID }, new { @class = "btn btn-link" })
+                        }
+                    </td>
+                    <td>
+                        @foreach (var row in item.Contracts)
+                        {
+                            @Html.ActionLink(row.Bid.ProfileName, "ProfileView", "Profile", new { id = row.Bid.ProfileID, area = "Employee" }, new { @class = "btn btn-link" })
+                        }
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>

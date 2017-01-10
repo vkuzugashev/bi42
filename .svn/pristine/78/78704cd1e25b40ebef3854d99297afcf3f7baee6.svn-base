@@ -1,0 +1,64 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Bi42.Models;
+using System.IO;
+using System.Web.Security;
+
+
+namespace bi42.Areas.Customer.Controllers
+{
+    public class FeedBackController : Controller
+    {
+        private DbModel db = new DbModel();
+
+        [Authorize]
+        [HttpGet]
+        public ActionResult Index(int p, int o)
+        {
+            string UserID = User.Identity.Name;
+            FeedBack feedBack = db.FeedBacks.SingleOrDefault(x => x.ProfileID == p && x.OrderID == o && x.UserID == UserID);
+            if (feedBack == null)
+            {
+                feedBack = new FeedBack();
+                feedBack.UserID = UserID;
+                feedBack.Profile = db.Profiles.SingleOrDefault<Profile>(x => x.ProfileID == p);
+                feedBack.ProfileID = p;
+                feedBack.Order = db.Orders.SingleOrDefault<Order>(x => x.OrderID == o);
+                feedBack.OrderID = o;
+            }
+            return View(feedBack);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ActionName("Index")]
+        public ActionResult FeedBack()
+        {
+            string UserID = User.Identity.Name;
+            FeedBack feedBack = new FeedBack();
+            if (TryUpdateModel<FeedBack>(feedBack))
+            {
+                feedBack.UserID = UserID;
+                feedBack.PublishTime = DateTime.Now;
+                if (feedBack.FeedBackID == 0)
+                    db.FeedBacks.Add(feedBack);
+                else
+                    db.Entry<FeedBack>(feedBack).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Details", "Order", new { orderid = feedBack.OrderID });
+        }
+
+
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
+    }
+}

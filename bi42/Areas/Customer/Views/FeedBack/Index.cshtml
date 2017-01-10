@@ -1,0 +1,64 @@
+﻿@model Bi42.Models.FeedBack
+@{
+    ViewBag.Title = "Отзыв о работнике";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section featured {
+    <div class="alert alert-info">
+        Создайте ваш отзыв о работнике. Оцените на ваш взгляд его уровень как специалиста.
+    </div>
+}
+<div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="well">
+                    <h4>@Model.Profile.Name</h4>
+                    @Model.Profile.Description
+                 </div>
+            </div>
+        </div>
+</div>
+
+<h4>Ваш отзыв</h4>
+
+@using (Html.BeginForm(null, null, FormMethod.Post))
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.FeedBackID)
+    @Html.HiddenFor(model => model.ProfileID)
+    @Html.HiddenFor(model => model.OrderID)
+    @Html.HiddenFor(model => model.FromProfileID)
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.LabelFor(model => model.Description)
+                    @Html.TextAreaFor(model => model.Description, new { rows = 10, @class = "form-control" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-1">
+                    @Html.LabelFor(model => model.Estimation)
+                    @Html.DropDownListFor(model => model.Estimation, new SelectList(
+                                            new List<SelectListItem> {
+                                                new SelectListItem { Value="1", Text="1" },
+                                                new SelectListItem { Value="2", Text="2" },
+                                                new SelectListItem { Value="3", Text="3" },
+                                                new SelectListItem { Value="4", Text="4" },
+                                                new SelectListItem { Value="5", Text="5" },
+                                            }, "Value", "Text", 5), new { rows = 10, @class = "form-control" })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">&nbsp;</div>
+    <div class="row">
+        <div class="col-md-12">
+            <input type="submit" class="btn btn-primary" value="Сохранить" />
+            &nbsp;&nbsp;
+            @Html.ActionLink("Назад", "Details", "Order", new { orderid=Model.OrderID }, new { @class = "btn btn-default" })
+        </div>
+    </div>
+}
+
