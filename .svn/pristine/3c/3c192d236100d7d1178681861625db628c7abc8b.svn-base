@@ -1,9 +1,0 @@
-﻿@{
-    ViewBag.Title = "Подтверждение почты";
-}
-
-<div>
-    <p>
-        Благодарим за подтверждение вашей почты. @Html.ActionLink("Щелкните здесь для входа", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
-    </p>
-</div>
