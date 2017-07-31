@@ -79,7 +79,7 @@ namespace bi42.Areas.Employer.Controllers
                 if (task.PublishTime == null)
                     task.PublishTime = DateTime.Now;
 
-                task.UpdateTime = DateTime.Now;
+                //task.UpdateTime = DateTime.Now;
 
                 if (id == 0)
                     db.OrderTasks.Add(task);

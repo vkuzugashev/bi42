@@ -10,13 +10,13 @@ using Bi42.Models;
 
 namespace bi42.Areas.Admin.Controllers
 {
-    public class ProjectAreaController : Controller
+    [Authorize(Roles = "Admin")]
+    public class OrderAreaController : Controller
     {
         private DbModel db = new DbModel();
 
         //
         // GET: /Admin/ProjectArea/
-
         public ActionResult Index()
         {
             return View(db.OrderAreas.ToList());

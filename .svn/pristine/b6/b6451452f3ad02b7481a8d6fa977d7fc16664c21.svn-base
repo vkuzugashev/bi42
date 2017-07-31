@@ -77,10 +77,6 @@
       <HintPath>..\packages\Quartz.2.3.3\lib\net40\Quartz.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RazorEngine, Version=3.9.3.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
-      <HintPath>..\packages\RazorEngine.3.9.3\lib\net45\RazorEngine.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -196,7 +192,6 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderAreaController.cs" />
-    <Compile Include="Areas\Admin\Controllers\SendMessageController.cs" />
     <Compile Include="Areas\Customer\Controllers\ContractController.cs" />
     <Compile Include="Areas\Customer\Controllers\HomeController.cs" />
     <Compile Include="Areas\Customer\Controllers\FindEmployeeController.cs" />
@@ -269,7 +264,6 @@
     <Content Include="Areas\Admin\Views\Profile\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Profile\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Profile\ProfileView.cshtml" />
-    <Content Include="Areas\Admin\Views\SendMessage\Index.cshtml" />
     <None Include="job_scheduling_data_2_0.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -279,17 +273,9 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
     <Compile Include="SharedLib\Mailer.cs" />
     <Compile Include="SharedLib\SharedLib.cs" />
     <Compile Include="Startup.cs" />
-    <Content Include="Views\EmailTemplates\Welcome.cshtml" />
-    <Content Include="Views\EmailTemplates\MessageInfo.cshtml" />
-    <Content Include="Views\EmailTemplates\MessageFromAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -393,10 +379,6 @@
     <Content Include="Areas\MyShop\Views\ShopBoards\Edit.cshtml" />
     <Content Include="Areas\MyShop\Views\ShopBoards\Index.cshtml" />
     <None Include="Properties\PublishProfiles\file.pubxml" />
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="robots.txt" />
     <Content Include="Scripts\bootstrap.js" />

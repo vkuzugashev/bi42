@@ -1,0 +1,17 @@
+2017-01-11 00:10:46.2240|INFO|Quartz.Impl.StdSchedulerFactory|Default Quartz.NET properties loaded from embedded resource file
+2017-01-11 00:10:46.2770|INFO|Quartz.Impl.StdSchedulerFactory|Using default implementation for object serializer
+2017-01-11 00:10:46.2970|INFO|Quartz.Impl.StdSchedulerFactory|Using default implementation for ThreadExecutor
+2017-01-11 00:10:46.4080|INFO|Quartz.Core.SchedulerSignalerImpl|Initialized Scheduler Signaller of type: Quartz.Core.SchedulerSignalerImpl
+2017-01-11 00:10:46.4080|INFO|Quartz.Core.QuartzScheduler|Quartz Scheduler v.2.3.3.0 created.
+2017-01-11 00:10:46.4120|INFO|Quartz.Simpl.RAMJobStore|RAMJobStore initialized.
+2017-01-11 00:10:46.4120|INFO|Quartz.Core.QuartzScheduler|Scheduler meta-data: Quartz Scheduler (v2.3.3.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'Quartz.Core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'Quartz.Simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'Quartz.Simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2017-01-11 00:10:46.4120|INFO|Quartz.Impl.StdSchedulerFactory|Quartz scheduler 'DefaultQuartzScheduler' initialized
+2017-01-11 00:10:46.4120|INFO|Quartz.Impl.StdSchedulerFactory|Quartz scheduler version: 2.3.3.0
+2017-01-11 00:10:46.4120|INFO|Quartz.Core.QuartzScheduler|Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.

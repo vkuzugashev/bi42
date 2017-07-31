@@ -1,0 +1,54 @@
+2017-01-11 00:00:20.4914|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 1 triggers
+2017-01-11 00:00:26.4506|DEBUG|Quartz.Simpl.SimpleJobFactory|Producing instance of Job 'Alert.SendMail', class=bi42.SendMailJob
+2017-01-11 00:00:26.4506|DEBUG|Quartz.Core.JobRunShell|Calling Execute on job Alert.SendMail
+2017-01-11 00:00:26.4506|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:00:26.4506|DEBUG|Quartz.Core.JobRunShell|Trigger instruction : NoInstruction
+2017-01-11 00:00:55.4429|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:01:19.1237|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 1 triggers
+2017-01-11 00:01:26.4401|DEBUG|Quartz.Simpl.SimpleJobFactory|Producing instance of Job 'Alert.SendMail', class=bi42.SendMailJob
+2017-01-11 00:01:26.4401|DEBUG|Quartz.Core.JobRunShell|Calling Execute on job Alert.SendMail
+2017-01-11 00:01:26.4401|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:01:26.4557|DEBUG|Quartz.Core.JobRunShell|Trigger instruction : NoInstruction
+2017-01-11 00:01:50.0429|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:02:19.0901|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 1 triggers
+2017-01-11 00:02:26.4533|DEBUG|Quartz.Simpl.SimpleJobFactory|Producing instance of Job 'Alert.SendMail', class=bi42.SendMailJob
+2017-01-11 00:02:26.4533|DEBUG|Quartz.Core.JobRunShell|Calling Execute on job Alert.SendMail
+2017-01-11 00:02:26.4533|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:02:26.4689|DEBUG|Quartz.Core.JobRunShell|Trigger instruction : NoInstruction
+2017-01-11 00:02:50.1497|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:03:20.1323|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 1 triggers
+2017-01-11 00:03:26.4472|DEBUG|Quartz.Simpl.SimpleJobFactory|Producing instance of Job 'Alert.SendMail', class=bi42.SendMailJob
+2017-01-11 00:03:26.4472|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:03:26.4472|DEBUG|Quartz.Core.JobRunShell|Calling Execute on job Alert.SendMail
+2017-01-11 00:03:26.4628|DEBUG|Quartz.Core.JobRunShell|Trigger instruction : NoInstruction
+2017-01-11 00:03:53.6224|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:04:22.0194|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 1 triggers
+2017-01-11 00:04:26.4498|DEBUG|Quartz.Simpl.SimpleJobFactory|Producing instance of Job 'Alert.SendMail', class=bi42.SendMailJob
+2017-01-11 00:04:26.4498|DEBUG|Quartz.Core.JobRunShell|Calling Execute on job Alert.SendMail
+2017-01-11 00:04:26.4498|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:04:26.4654|DEBUG|Quartz.Core.JobRunShell|Trigger instruction : NoInstruction
+2017-01-11 00:04:51.9359|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:05:20.4758|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 1 triggers
+2017-01-11 00:05:26.4506|DEBUG|Quartz.Simpl.SimpleJobFactory|Producing instance of Job 'Alert.SendMail', class=bi42.SendMailJob
+2017-01-11 00:05:26.4506|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:05:26.4506|DEBUG|Quartz.Core.JobRunShell|Calling Execute on job Alert.SendMail
+2017-01-11 00:05:26.4662|DEBUG|Quartz.Core.JobRunShell|Trigger instruction : NoInstruction
+2017-01-11 00:05:51.8474|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:10:46.4120|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:10:46.4520|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 1 triggers
+2017-01-11 00:10:46.4580|DEBUG|Quartz.Simpl.SimpleJobFactory|Producing instance of Job 'Alert.SendMail', class=bi42.SendMailJob
+2017-01-11 00:10:46.4580|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:10:46.4750|DEBUG|Quartz.Core.JobRunShell|Calling Execute on job Alert.SendMail
+2017-01-11 00:10:48.0460|DEBUG|Quartz.Core.JobRunShell|Trigger instruction : NoInstruction
+2017-01-11 00:11:11.9950|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:11:35.5370|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 1 triggers
+2017-01-11 00:11:46.4230|DEBUG|Quartz.Simpl.SimpleJobFactory|Producing instance of Job 'Alert.SendMail', class=bi42.SendMailJob
+2017-01-11 00:11:46.4230|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:11:46.4250|DEBUG|Quartz.Core.JobRunShell|Calling Execute on job Alert.SendMail
+2017-01-11 00:11:46.4440|DEBUG|Quartz.Core.JobRunShell|Trigger instruction : NoInstruction
+2017-01-11 00:12:11.7290|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:12:38.8570|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 1 triggers
+2017-01-11 00:12:46.4230|DEBUG|Quartz.Simpl.SimpleJobFactory|Producing instance of Job 'Alert.SendMail', class=bi42.SendMailJob
+2017-01-11 00:12:46.4230|DEBUG|Quartz.Core.JobRunShell|Calling Execute on job Alert.SendMail
+2017-01-11 00:12:46.4230|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
+2017-01-11 00:12:46.4400|DEBUG|Quartz.Core.JobRunShell|Trigger instruction : NoInstruction

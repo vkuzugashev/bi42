@@ -13,9 +13,6 @@
     </sectionGroup>
 
     <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
-    <sectionGroup name="applicationSettings" type="System.Configuration.ApplicationSettingsGroup, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" >
-      <section name="bi42.Properties.Settings" type="System.Configuration.ClientSettingsSection, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
-    </sectionGroup>
   </configSections>
   <connectionStrings>
     <add name="DefaultConnection" connectionString="Data Source=192.168.2.101;Initial Catalog=bi42;User ID=bi42ru;Password=bi42ru" providerName="System.Data.SqlClient" />
@@ -44,7 +41,7 @@
   <system.net>
     <mailSettings>
       <smtp deliveryMethod="Network" from="bi42@list.ru">
-        <network host="smtp.mail.ru" port="25" defaultCredentials="false" userName="bi42@list.ru" password="gfhjkmvjzpfuflrf" enableSsl="true" />
+        <network host="smtp.mail.ru" port="25" defaultCredentials="false"  userName="bi42@list.ru" password="gfhjkmvjzpfuflrf" enableSsl="true"/>
       </smtp>
     </mailSettings>
   </system.net>
@@ -116,11 +113,4 @@
       <provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer" />
     </providers>
   </entityFramework>
-  <applicationSettings>
-    <bi42.Properties.Settings>
-      <setting name="SITEDIR" serializeAs="String">
-        <value>C:\workspace\bi42.ru\bi42</value>
-      </setting>
-    </bi42.Properties.Settings>
-  </applicationSettings>
 </configuration>

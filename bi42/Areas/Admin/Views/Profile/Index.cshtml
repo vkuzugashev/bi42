@@ -1,0 +1,146 @@
+﻿@model PagedList.IPagedList<Bi42.Models.Profile>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Профили";
+}
+
+@section featured {
+    <div class="alert alert-info">
+    Административная консоль управления профилями.
+</div>
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { role = "form", @class = "form-horizontal" }))
+{
+<div class="row">
+    <div class="col-md-2">
+        <div class="row">
+            <div class="col-md-12">
+                <label for="OrderAreaId" class="control-label">Сфера деятельности</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.DropDownList("OrderAreaId", (IEnumerable<SelectListItem>)ViewBag.OrderAreas, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-12">
+                <label for="strsearch" class="control-label">Строка поиска</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="text" id="strsearch" name="strsearch" value="@ViewBag.StrSearch" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1">
+        <div class="row">
+            <div class="col-md-12">
+                <label for="btn_submit" class="control-label">&nbsp;</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="submit" id="btn_submit" class="btn btn-primary" value="Поиск" />
+            </div>
+        </div>
+    </div>
+</div>
+}
+<div class="row">&nbsp;</div>
+<div class="row">
+
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, OrderAreaID=ViewBag.OrderAreaID, StrSearch=ViewBag.StrSearch }))
+
+<table width="100%" class="table table-bordered">
+    <tr>
+        <th width="200px">@Html.ActionLink("Создать новый", "Create", new { OrderAreaId=ViewBag.OrderAreaID }, new { @class="btn btn-link"})</th>
+        <th class="col-md-1">
+        </th>
+        <th class="col-md-1">
+            Наименование
+        </th>
+        <th class="col-md-1">
+            Email
+        </th>
+        <th class="col-md-1">
+            Тип профиля
+        </th>
+        <th class="col-md-1">
+            Активно
+        </th>
+        <th class="col-md-1">
+            Область
+        </th>
+        <th class="col-md-1">
+            Опубликован
+        </th>
+        <th class="col-md-1">
+            Ставок
+        </th>
+        <th>
+            Описание
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style ="white-space:nowrap">
+                @Html.ActionLink("Посмотреть", "Details", new { id = item.ProfileID, StrSearch=ViewBag.StrSearch, page=Model.PageNumber }, new { @class = "btn btn-link" })
+				<br/>
+                @Html.ActionLink("Изменить", "Edit", new { id = item.ProfileID, StrSearch=ViewBag.StrSearch, page=Model.PageNumber }, new { @class = "btn btn-link" }) 
+				<br/>
+                @Html.ActionLink("Удалить", "Delete", new { id = item.ProfileID, StrSearch=ViewBag.StrSearch, page=Model.PageNumber }, new { @class = "btn btn-link" })
+            </td>
+            <td>
+                @if (item.LogoImage != null && !"".Equals(item.LogoImage))
+                {
+                    <img src="@Html.DisplayFor(modelItem => item.LogoImage)" />
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @if(item.ProfileTypeID==1)
+				{
+					@:Заказчик
+				}
+				else
+				{
+					@:Подрядчик
+				}
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsActive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderAreaName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PublishTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bids)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+        </tr>
+    }
+
+</table>
+
+Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { page, OrderAreaId=ViewBag.OrderAreaId, StrSearch=ViewBag.StrSearch }))
+
+</div>

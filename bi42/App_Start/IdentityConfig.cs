@@ -30,6 +30,20 @@ namespace bi42
             mail.IsBodyHtml = true;
             return client.SendMailAsync(mail);
         }
+
+        public void Send(IdentityMessage message)
+        {
+            // Подключите здесь службу электронной почты для отправки сообщения электронной почты.
+            SmtpClient client = new SmtpClient();
+            // создаем письмо: message.Destination - адрес получателя
+            var mail = new MailMessage();
+            mail.To.Add(message.Destination);
+            mail.Subject = message.Subject;
+            mail.Body = message.Body;
+            mail.IsBodyHtml = true;
+            client.Send(mail);
+        }
+
     }
 
     public class SmsService : IIdentityMessageService

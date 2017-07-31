@@ -1,16 +1,18 @@
-﻿@model Pabzon.Models.ProjectArea
+﻿@model Bi42.Models.OrderArea
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Create</h2>
+<h2>Edit</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>ProjectArea</legend>
+        <legend>OrderArea</legend>
+
+        @Html.HiddenFor(model => model.OrderAreaID)
 
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
@@ -29,7 +31,7 @@
         </div>
 
         <p>
-            <input type="submit" value="Create" />
+            <input type="submit" value="Save" />
         </p>
     </fieldset>
 }

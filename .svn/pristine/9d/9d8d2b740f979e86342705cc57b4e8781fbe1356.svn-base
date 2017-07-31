@@ -6,9 +6,8 @@ using System.Data.Entity;
 
 namespace Bi42.Models
 {
-   
 
-    public class PrivateMessage 
+    public class PrivateMessage
     {
         public int id;
         public string publishtime;
@@ -23,25 +22,6 @@ namespace Bi42.Models
         public string publishtime;
         public string profile;
         public string message;
-
-    }
-
-    //Базовый класс со служебными полями
-    public class BaseEntity
-    {
-        public DateTime? CreateTime { get; set; }
-        public DateTime? UpdateTime { get; set; }
-        public string UpdateUserID { get; set; }
-
-        public virtual void OnBeforeInsert()
-        {
-            CreateTime = DateTime.Now;
-        }
-
-        public virtual void OnBeforeUpdate()
-        {
-            UpdateTime = DateTime.Now;
-        }
 
     }
 
@@ -63,7 +43,7 @@ namespace Bi42.Models
      * Таблица областей профилей
      **/
     [Table("OrderAreas")]
-    public class OrderArea : BaseEntity
+    public class OrderArea
     {
         [Key]
         public int OrderAreaID { get; set; }
@@ -79,7 +59,7 @@ namespace Bi42.Models
      * Таблица статусов заказа
      **/
     [Table("OrderStatus")]
-    public class OrderStatus : BaseEntity
+    public class OrderStatus
     {
         [Key]
         public int OrderStatusID { get; set; }
@@ -87,12 +67,11 @@ namespace Bi42.Models
         public string Name { get; set; }
     }
 
-
     /**
      * Таблица бюджетов заказа
      **/
     [Table("BudgetLevels")]
-    public class BudgetLevel : BaseEntity
+    public class BudgetLevel
     {
         [Key]
         public int BudgetLevelID { get; set; }
@@ -104,7 +83,7 @@ namespace Bi42.Models
      * Таблица статусов ставок
      **/
     [Table("BidStatuses")]
-    public class BidStatus : BaseEntity
+    public class BidStatus
     {
         [Key]
         public int BidStatusID { get; set; }
@@ -116,7 +95,7 @@ namespace Bi42.Models
      * Таблица статусов просмотра проектов
      **/
     [Table("OrderWatchStatuses")]
-    public class OrderWatchStatus : BaseEntity
+    public class OrderWatchStatus
     {
         [Key]
         public int OrderWatchStatusID { get; set; }
@@ -128,7 +107,7 @@ namespace Bi42.Models
     * Таблица статусов задач
      **/
     [Table("TaskStatuses")]
-    public class TaskStatus : BaseEntity
+    public class TaskStatus
     {
         [Key]
         public int TaskStatusID { get; set; }
@@ -145,7 +124,7 @@ namespace Bi42.Models
      * Таблица профилей пользователей
      **/
     [Table("Profiles")]
-    public class Profile : BaseEntity
+    public class Profile
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
@@ -209,7 +188,7 @@ namespace Bi42.Models
     * Таблица проектов пользователей
     **/
     [Table("Orders")]
-    public class Order : BaseEntity
+    public class Order
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
@@ -303,7 +282,7 @@ namespace Bi42.Models
      * Таблица отобранных для просмотра заказов
      **/
     [Table("OrderWatches")]
-    public class OrderWatch : BaseEntity
+    public class OrderWatch
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
@@ -373,7 +352,7 @@ namespace Bi42.Models
      * Таблица ставок
      **/
     [Table("Bids")]
-    public class Bid : BaseEntity
+    public class Bid
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
@@ -462,7 +441,7 @@ namespace Bi42.Models
      * Таблица отзывов
      **/
     [Table("FeedBacks")]
-    public class FeedBack : BaseEntity
+    public class FeedBack
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
@@ -489,7 +468,7 @@ namespace Bi42.Models
      * Таблица публичных сообщений
      **/
     [Table("PublicOrderMessages")]
-    public class PublicOrderMessage : BaseEntity
+    public class PublicOrderMessage
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
@@ -518,7 +497,7 @@ namespace Bi42.Models
      * Таблица приватных сообщений
      **/
     [Table("PrivateOrderMessages")]
-    public class PrivateOrderMessage : BaseEntity
+    public class PrivateOrderMessage
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
@@ -550,7 +529,7 @@ namespace Bi42.Models
      * Таблица задач по заказу
      **/
     [Table("OrderTasks")]
-    public class OrderTask : BaseEntity
+    public class OrderTask
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
@@ -606,7 +585,7 @@ namespace Bi42.Models
         [ForeignKey("TaskStatusID")]
         [Display(Name = "Статус задачи")]
         public virtual TaskStatus TaskStatus { get; set; }
-        //public DateTime? UpdateTime { get; set; }
+        public DateTime? UpdateTime { get; set; }
     }
 
 
@@ -615,7 +594,7 @@ namespace Bi42.Models
     /**
      * Таблица контрактов
      **/
-    public class Contract : BaseEntity
+    public class Contract
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
@@ -663,7 +642,7 @@ namespace Bi42.Models
     * Таблица примеров моей работы
     **/
     [Table("MyWorks")]
-    public class MyWork : BaseEntity
+    public class MyWork
     {
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
@@ -683,18 +662,6 @@ namespace Bi42.Models
         public bool IsActive { get; set; }
         [ForeignKey("ProfileID")]
         public virtual Profile Profile { get; set; }
-    }
-
-    #endregion
-
-    #region Управление почтовой рассылкой
-
-    [Table("MessageEvents")]
-    public class MessageEvent : BaseEntity
-    {
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int MessageID { get; set; }
     }
 
     #endregion
@@ -816,10 +783,9 @@ namespace Bi42.Models
 
     public class DbModel : DbContext
     {
-        //public DbModel():base("DefaultConnection")
-        //{
-        //}
-
+        /*public DbModel():base("DefaultConnection")
+        {
+        }*/
         public DbSet<UserLastAccess> UserLastAccess { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<OrderArea> OrderAreas { get; set; }
@@ -843,11 +809,8 @@ namespace Bi42.Models
         public DbSet<Commodity> Commodities { get; set; }
         public DbSet<ShopBoard> ShopBoards { get; set; }
 
-        //Рассылка почтовая
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Order>()
@@ -874,38 +837,6 @@ namespace Bi42.Models
                 .HasForeignKey(t => t.OrderID)
                 .WillCascadeOnDelete(false);
         }
-
-        /// <summary>
-        /// переопределим метод сохранения данных для задействования служебной логики
-        /// </summary>
-        /// <returns></returns>
-        public override int SaveChanges()
-        {
-            var changedEntities = ChangeTracker.Entries();
-
-            foreach (var changedEntity in changedEntities)
-            {
-                if (changedEntity.Entity is BaseEntity)
-                {
-                    var entity = (BaseEntity)changedEntity.Entity;
-
-                    switch (changedEntity.State)
-                    {
-                        case EntityState.Added:
-                            entity.OnBeforeInsert();
-                            break;
-
-                        case EntityState.Modified:
-                            entity.OnBeforeUpdate();
-                            break;
-
-                    }
-                }
-            }
-
-            return base.SaveChanges();
-        }
-
 
     }
 }

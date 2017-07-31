@@ -1,18 +1,12 @@
 ﻿using bi42.Models;
-using bi42.Properties;
 using Bi42.Models;
 using Common.Logging;
 using Microsoft.AspNet.Identity;
 using Quartz;
-using RazorEngine;
-using RazorEngine.Templating;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Web;
-using System.Web.Mvc;
 
 namespace bi42
 {
@@ -37,12 +31,6 @@ namespace bi42
             using (var db = new DbModel())
             {
                 EmailService emailService = new EmailService();
-                const string MessageInfoInCache = "MessageInfoInCache";
-                if (!Engine.Razor.IsTemplateCached(MessageInfoInCache, null))
-                {
-                    string template = File.ReadAllText(Settings.Default.SITEDIR + "/Views/EmailTemplates/MessageInfo.cshtml");
-                    Engine.Razor.Compile(template, MessageInfoInCache);
-                }
 
                 var profiles = from p in db.Profiles
                                where p.IsActive && p.Email != null && p.Email.Contains("@")
@@ -180,21 +168,24 @@ namespace bi42
                             db.SetLastEmail(prefix + "order_new", profile.UserID, 0);
                     }
 
+
                     //Сформируем письмо
                     if (!"".Equals(messageBody))
                     {
-
-                        //Получим текст по шаблону
-                        messageBody = Engine.Razor.Run(MessageInfoInCache, null, new { Name=profile.Name, Body=messageBody, Time=DateTime.Now});
-
+                        messageBody = string.Format(@"
+Уважаемый пользователь, <b>{0}</b><br/><br/>
+Есть новые события на сайте <a href='http://www.bi42.ru/'>WWW.BI42.RU</a>:<br/>{1}<br/><br/>
+С уважением администрация сайта<br/>
+Пожалуйста не отвечайте на это письмо.<br/>
+Письмо создано автоматической системой оповещения<br/>
+Дата и время создания сообщения: {2}", profile.Name, messageBody, DateTime.Now);
                         IdentityMessage imessage = new IdentityMessage { Destination = profile.Email, Subject = "Есть новые события на сайте www.bi42.ru", Body = messageBody };
                         await emailService.SendAsync(imessage);
-
                         log.DebugFormat("Отправлено сообщение получателю {0}: \r\nsubject={1}\r\n{2}", imessage.Destination, imessage.Subject, imessage.Body);
                     }
+
                     
                 }
-
             }
           
         }

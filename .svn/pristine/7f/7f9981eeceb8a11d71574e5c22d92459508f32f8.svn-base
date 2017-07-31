@@ -1,0 +1,9 @@
+User-Agent: *
+Disallow: /Login*
+Disallow: /Admin*
+Disallow: /Account*
+Disallow: /MyShop*
+Clean-param: OrderAreaId /Customer/FindEmployee*
+Clean-param: OrderAreaId /Employee/FindCustomer*
+Host: www.bi42.ru
+
