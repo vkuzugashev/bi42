@@ -1,5 +1,0 @@
-2017-03-10 17:12:06.2014|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
-2017-03-10 17:12:06.2224|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 1 triggers
-2017-03-10 17:12:06.2294|DEBUG|Quartz.Simpl.SimpleJobFactory|Producing instance of Job 'Alert.SendMail', class=bi42.SendMailJob
-2017-03-10 17:12:06.2294|DEBUG|Quartz.Core.QuartzSchedulerThread|Batch acquisition of 0 triggers
-2017-03-10 17:12:06.2454|DEBUG|Quartz.Core.JobRunShell|Calling Execute on job Alert.SendMail
