@@ -1,14 +1,9 @@
-﻿using System;
+﻿using Bi42.Models;
+using PagedList;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Bi42.Models;
-using System.IO;
-using System.Web.Security;
-using PagedList;
 
 namespace bi42.Areas.Customer.Controllers
 {

@@ -1,0 +1,82 @@
+﻿@model PagedList.IPagedList<Bi42.Models.Profile>
+@using PagedList.Mvc;
+
+@{ 
+    ViewBag.Title = "Подрядчики"+ (Model.PageNumber==1 ? "" :  " страница " + Model.PageNumber);
+}
+
+@section featured {
+    <div class="alert alert-info">
+        Выберите область в которой вы хотите найти подрядчика.
+    </div>
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { role = "form", @class = "form-horizontal" }))
+{
+<div class="row">
+    <div class="col-md-2">
+        <div class="row">
+            <div class="col-md-12">
+                <label for="OrderAreaId" class="control-label">Сфера деятельности</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.DropDownList("OrderAreaId", (IEnumerable<SelectListItem>)ViewBag.OrderAreas, new { @class = "form-control" })
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-12">
+                <label for="strsearch" class="control-label">Строка поиска</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="text" id="strsearch" name="strsearch" value="@ViewBag.StrSearch" class="form-control" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-1">
+        <div class="row">
+            <div class="col-md-12">
+                <label for="btn_submit" class="control-label">&nbsp;</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="submit" id="btn_submit" class="btn btn-primary" value="Поиск" />
+            </div>
+        </div>
+    </div>
+</div>
+}
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-12">
+        @foreach (var item in Model)
+        {
+            <hr />
+            <div class="row">
+                <div class="col-md-2">
+                    @if (item.LogoImage != null && !"".Equals(item.LogoImage))
+                    {
+                        <img src="@Html.DisplayFor(modelItem => item.LogoImage)" class="img-responsive" />
+                    }
+                </div>
+                <div class="col-md-10">
+                    @Html.ActionLink(item.Name, "ProfileView", "Profile", new { id = item.ProfileID, area = "Employee" }, new { @class = "btn btn-link" })
+                    <p>
+                    @Html.DisplayFor(modelItem => item.Description)
+                    </p>
+                    <small>Зарегистрирован @Html.DisplayFor(modelItem => item.PublishTime)</small>
+                </div>
+            </div>
+        }
+
+        <hr />
+        Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page, OrderAreaId=ViewBag.OrderAreaId, StrSearch=ViewBag.StrSearch }))
+    </div>
+</div>

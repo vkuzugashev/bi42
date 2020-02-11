@@ -1,0 +1,67 @@
+﻿@model IEnumerable<Bi42.Models.Commodity>
+
+@{
+    ViewBag.Title = "Ваш ТОП 10 товаров";
+}
+
+@section featured {
+    <div class="alert alert-info">
+        Создайте ваш ТОП 10 товаров.
+    </div>
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th class="col-md-1">
+            @if (ViewBag.IsExistShop && Model.Count() < 10) { 
+                @Html.ActionLink("Создать товар", "Create", null, new { @class="btn btn-link" })
+            }
+        </th>
+        <th class="col-md-1"></th>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th class="col-md-1">
+            @Html.DisplayNameFor(model => model.IsActive)
+        </th>
+        <th class="col-md-7">
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td style="white-space:nowrap">
+                @Html.ActionLink("Посмотреть", "Details", new { id = item.CommodityID }, new { @class = "btn btn-link" }) |
+                @Html.ActionLink("Изменить", "Edit", new { id = item.CommodityID }, new { @class = "btn btn-link" }) |
+                @Html.ActionLink("Удалить", "Delete", new { id = item.CommodityID }, new { @class = "btn btn-link" })
+            </td>
+            <td>
+                @if (item.PhotoImage != null && !"".Equals(item.PhotoImage))
+                {
+                    <img src="@Html.DisplayFor(modelItem => item.PhotoImage)" class="img-responsive"/>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @if (item.IsActive == true)
+                {
+                    @Html.DisplayFor(modelItem => item.IsActive)
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+        </tr>
+    }
+
+</table>

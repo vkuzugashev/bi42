@@ -1,0 +1,109 @@
+﻿@model Bi42.Models.Profile
+
+@{
+    ViewBag.Title = "Профиль заказчика";
+}
+
+@using (Html.BeginForm(null, null, FormMethod.Post, new { role = "form", enctype = "multipart/form-data", @class = "form-horizontal" }))
+{
+    @Html.ValidationSummary(true)
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.Name, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Name)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.OrderAreaID, new { @class = "control-label" })
+                        @Html.DropDownListFor(model => model.OrderAreaID, null, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.OrderAreaID)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.Slogan, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Slogan, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Slogan)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.LogoImage, new { @class = "control-label" })
+                        <input type="file" name="file" class="form-control" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.SiteUrl, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.SiteUrl, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.SiteUrl)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.Phone, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Phone, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Phone)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+                        @Html.TextBoxFor(model => model.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.Description, new { @class = "control-label" })
+                        @Html.TextAreaFor(model => model.Description, new { rows="5", @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Description)
+                    </div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-12">
+                        @Html.LabelFor(model => model.IsActive, new { @class = "control-label" })
+                        &nbsp;
+                        @Html.CheckBoxFor(model => model.IsActive)
+                    </div>
+                </div>
+                <div class="row">&nbsp;</div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <input type="submit" class="btn btn-primary" value="Сохранить" />
+                        &nbsp;&nbsp;
+                        @Html.ActionLink("Назад", "Index", null, new { @class = "btn btn-default" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="well">
+                    <h4>Значение полей:</h4>
+                    <ul>
+                        <li><b>Профиль</b> - заполните как должен показываться ваш профиль для других</li>
+                        <li><b>Область заказа</b> - заполните область к которой относиться ваша основная деятельность</li>
+                        <li><b>Логотип</b> - заполните ваш логотип/слоган/девиз</li>
+                        <li><b>Изображение логотипа</b> - загрузите изображение для вашего логотипа</li>
+                        <li><b>Адрес сайта</b> - заполните адрес вашего сайта в виде <b>http://адрес</b></li>
+                        <li><b>Телефон</b> - заполните ваш контактный телефон</li>
+                        <li><b>Email</b> - заполните ваш электронный почтовый адрес</li>
+                        <li><b>Описание профиля</b> - заполните краткое описание вашего профиля</li>
+                        <li><b>Текущий профиль</b> - поиск заказов осуществляется с учётом текущего профиля</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+            @Scripts.Render("~/bundles/jqueryui")
+        }

@@ -1,0 +1,114 @@
+﻿@model Bi42.Models.Profile
+@{
+    ViewBag.Title = Model.Name;
+	ViewBag.Description = Model.Description;
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.OrderAreaID, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.OrderArea.Name, null, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.OrderAreaID)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Slogan, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Slogan, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Slogan)
+            </div>
+        </div>
+        @if (Model.LogoImage != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    @Html.Label("LogoImage", new { @class = "control-label" })
+                    <br />
+                    <img id="LogoImage" src="@Model.LogoImage" />
+                </div>
+            </div>
+        }
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.SiteUrl, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.SiteUrl, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.SiteUrl)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Phone, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Phone, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Email, new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Email)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @Html.LabelFor(model => model.Description, new { @class = "control-label" })
+                @Html.TextAreaFor(model => model.Description, new { rows = 5, @class = "form-control", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+        </div>
+        <div class="row">&nbsp;</div>
+    </div>
+    <div class="col-md-4">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Отзывы заказчика</h4>
+                @foreach (var item in Model.FeedBacks.OrderByDescending(x => x.PublishTime).Take(5))
+                {
+                    @Html.ActionLink(item.FromProfile.Name, "ProfileView", "Profile", new { id = item.FromProfileID, area = "Customer" }, null)
+                    <br/>
+                    @:Дата @(((DateTime)item.PublishTime).ToString("dd.MM.yyyy"))
+                    @:Оценка <span class="badge">@item.Estimation</span>
+                    <br/>
+                    @item.Description
+                    <br/>
+                }
+            </div>
+        </div>
+    </div>
+
+</div>
+<div class="row">&nbsp;</div>
+<div class="row">
+    <div class="col-md-12">
+    <h2>Примеры работ</h2>
+    @foreach (var item in Model.MyWorks.Where(x => x.IsActive == true).OrderByDescending(x => x.MyWorkID).Take(5))
+    {
+        <h3>@item.Name</h3>
+        <div class="row">
+            @if (item.MyWorkImage != null && !"".Equals(item.MyWorkImage))
+            {
+                <div class="col-md-3">
+                    <img src="@Html.DisplayFor(modelItem => item.MyWorkImage)" class="img-responsive" />
+                </div>
+                <div class="col-md-9">
+                    @Html.Raw(HttpUtility.HtmlEncode(item.Description).Replace("\n","<br/>"))
+					@if(item.SiteUrl != null)
+					{
+						<noindex>
+							<a href="@item.SiteUrl" target="_blank">Подробнее</a>
+						</noindex>
+					}
+                </div>
+            }
+            else
+            {
+                <div class="col-md-12">
+                    @Html.Raw(HttpUtility.HtmlEncode(item.Description).Replace("\n", "<br/>"))
+                </div>
+            }
+        </div>
+    }
+    </div>
+</div>

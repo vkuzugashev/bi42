@@ -1,7 +1,9 @@
-﻿using Quartz;
+﻿using MySql.Data.Entity;
+using Quartz;
 using Quartz.Impl;
 using System;
 using System.Configuration;
+using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -14,27 +16,29 @@ namespace bi42
 
         protected void Application_Start()
         {
+            //DbConfiguration.SetConfiguration(new MySqlEFConfiguration());
+
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
     
             //Запуск планировщика заданий
-            ISchedulerFactory schedFact = new StdSchedulerFactory();
-            IScheduler scheduler = schedFact.GetScheduler();
-            scheduler.Start();
-            IJobDetail jobDetail = JobBuilder.Create<SendMailJob>()
-                    .WithIdentity("SendMail", "Alert")
-                    .Build();
+            //ISchedulerFactory schedFact = new StdSchedulerFactory();
+            //IScheduler scheduler = schedFact.GetScheduler();
+            //scheduler.Start();
+            //IJobDetail jobDetail = JobBuilder.Create<SendMailJob>()
+            //        .WithIdentity("SendMail", "Alert")
+            //        .Build();
 
-            ITrigger trigger = TriggerBuilder.Create()
-                               .WithIdentity("trigger1", "Alert")
-                               .StartNow()
-                               //.WithDailyTimeIntervalSchedule(x => x.StartingDailyAt(new TimeOfDay(0,0)))
-                               .WithSimpleSchedule(x=>x.WithIntervalInSeconds(Convert.ToInt32(ConfigurationManager.AppSettings["jobSchedule.interval"])).RepeatForever())
-                               .Build();
+            //ITrigger trigger = TriggerBuilder.Create()
+            //                   .WithIdentity("trigger1", "Alert")
+            //                   .StartNow()
+            //                   //.WithDailyTimeIntervalSchedule(x => x.StartingDailyAt(new TimeOfDay(0,0)))
+            //                   .WithSimpleSchedule(x=>x.WithIntervalInSeconds(Convert.ToInt32(ConfigurationManager.AppSettings["jobSchedule.interval"])).RepeatForever())
+            //                   .Build();
 
-            scheduler.ScheduleJob(jobDetail, trigger);         
+            //scheduler.ScheduleJob(jobDetail, trigger);         
         }
 
         protected void Application_Stop()

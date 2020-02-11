@@ -6,7 +6,7 @@ using System.Data.Entity;
 
 namespace Bi42.Models
 {
-   
+
 
     public class PrivateMessage 
     {
@@ -814,11 +814,16 @@ namespace Bi42.Models
 
     #endregion
 
+    //[DbConfigurationType(typeof(MySqlEFConfiguration))]
     public class DbModel : DbContext
     {
-        //public DbModel():base("DefaultConnection")
-        //{
-        //}
+        public DbModel() : base("DbModel")
+        {
+
+            Database.SetInitializer(new DbModelInitializer());
+            //Database.Initialize(true);
+            //Database.CreateIfNotExists();
+        }
 
         public DbSet<UserLastAccess> UserLastAccess { get; set; }
         public DbSet<Profile> Profiles { get; set; }

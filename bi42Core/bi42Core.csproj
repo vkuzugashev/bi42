@@ -1,0 +1,117 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Models\Configuration.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Models\Configuration.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\MyShop\Views\Shared\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\_ChangePasswordPartial.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\Account\ConfirmEmail.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\ExternalLoginFailure.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\ForgotPassword.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\Login.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\Register.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\ResetPassword.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\SendCode.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\VerifyCode.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\_ChangePasswordPartial.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\_RemoveAccountPartial.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Account\_SetPasswordPartial.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\EmailTemplates\MessageFromAdmin.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\EmailTemplates\MessageInfo.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\EmailTemplates\Welcome.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\_ExternalLoginsListPartial.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\_RemoveAccountPartial.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\_SetPasswordPartial.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\ConfirmEmail.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\ExternalLoginConfirmation.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\ExternalLoginFailure.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\ForgotPassword.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\ForgotPasswordConfirmation.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\Login.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\Register.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\ResetPassword.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\ResetPasswordConfirmation.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\SendCode.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\Account\VerifyCode.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\EmailTemplates\MessageFromAdmin.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\EmailTemplates\MessageInfo.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Views\EmailTemplates\Welcome.cshtml" />
+  </ItemGroup>
+
+</Project>

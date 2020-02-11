@@ -1,12 +1,9 @@
-﻿using Bi42.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace Bi42.Models
 {
-    public class DbModelInitializer : System.Data.Entity.DropCreateDatabaseAlways<DbModel>
+    public class DbModelInitializer : DropCreateDatabaseIfModelChanges<DbModel>
     {
         protected override void Seed(DbModel context)
         {
